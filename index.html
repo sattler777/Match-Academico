@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Match Acadêmico – ache a dupla certa para estudar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--r:#e11d2e;--r2:#ff5a4d;--rd:#8f0a16;--k:#1c1010;--m:#74656a;--s:#fff3f0;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--k);font:400 17px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+.w{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.ser{font-family:Fraunces,Georgia,serif}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--k);color:#fff;padding:15px 28px;border-radius:99px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:var(--r)}
+.btn.red{background:linear-gradient(135deg,var(--r2),var(--r) 55%,var(--rd));box-shadow:0 10px 24px rgba(225,29,46,.35)}
+.btn.red:hover{background:linear-gradient(135deg,var(--r2),var(--r) 55%,var(--rd))}
+.btn.ghost{background:transparent;color:var(--k);box-shadow:inset 0 0 0 2px var(--k)}
+.btn.ghost:hover{background:var(--k);color:#fff}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{display:flex;align-items:center;gap:10px;font:800 24px Fraunces,serif;color:var(--k);text-decoration:none}
+.logo svg{width:34px;height:34px}
+nav .l{display:flex;gap:28px;align-items:center;font-weight:500}
+nav .l a:not(.btn){color:var(--k);text-decoration:none}
+nav .btn{padding:10px 20px;font-size:15px}
+@media(max-width:720px){nav .l a:not(.btn){display:none}}
+.hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:30px 0 90px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-bottom:60px}}
+.tagl{display:inline-block;background:var(--s);color:var(--r);font-weight:700;font-size:14px;padding:7px 14px;border-radius:99px;margin-bottom:22px;letter-spacing:.3px}
+h1{font-size:clamp(44px,7.4vw,84px);line-height:.98;margin:0 0 24px;font-weight:800;letter-spacing:-2px}
+h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--r2),var(--r) 50%,var(--rd));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:20px;color:var(--m);max-width:500px;margin:0 0 32px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.minis{display:flex;gap:26px;margin-top:38px;color:var(--m);font-size:15px}
+.minis b{display:block;font:800 28px Fraunces,serif;color:var(--k)}
+.stage{position:relative;display:flex;justify-content:center;padding:20px 0}
+.blob{position:absolute;width:min(480px,95vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 25%,#ff7b6e,var(--r) 52%,var(--rd));top:50%;left:50%;transform:translate(-50%,-50%);animation:br 9s ease-in-out infinite}
+@keyframes br{50%{border-radius:46% 54% 50% 50%/52% 46% 54% 48%}}
+.chip{position:absolute;background:#fff;border-radius:16px;padding:10px 16px;font-weight:700;font-size:14px;box-shadow:0 14px 30px rgba(60,0,5,.22);animation:fl 5s ease-in-out infinite;z-index:3;white-space:nowrap}
+.chip small{display:block;font-weight:500;color:var(--m);font-size:12px}
+.c1{left:-4px;top:18%}.c2{right:-6px;top:46%;animation-delay:-2s}.c3{left:8px;bottom:10%;animation-delay:-3.5s}
+@media(max-width:520px){.c1{left:-12px}.c2{right:-12px}}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.phone{position:relative;z-index:2;width:292px;height:590px;background:#171010;border-radius:46px;padding:10px;box-shadow:0 40px 70px rgba(70,0,8,.45)}
+.phone:before{content:"";position:absolute;top:18px;left:50%;width:84px;height:22px;background:#171010;border-radius:99px;transform:translateX(-50%);z-index:6}
+.scr{position:relative;width:100%;height:100%;background:#fff;border-radius:37px;overflow:hidden;display:flex;flex-direction:column}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:42px 20px 8px}
+.bar .logo{font-size:17px}.bar .logo svg{width:22px;height:22px}
+.bar span{font-size:12px;color:var(--m);font-weight:700}
+.deck{position:relative;flex:1;margin:6px 16px 0;touch-action:pan-y}
+.card{position:absolute;inset:0;background:#fff;border-radius:24px;box-shadow:0 8px 22px rgba(60,0,5,.2);display:flex;flex-direction:column;overflow:hidden;user-select:none;cursor:grab;transition:transform .28s}
+.card.drag{transition:none;cursor:grabbing}
+.top{position:relative;flex:1;display:flex;align-items:center;justify-content:center;color:#fff;font:800 110px Fraunces,serif;background:linear-gradient(160deg,var(--r2),var(--r) 55%,var(--rd))}
+.top:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;border:2px solid rgba(255,255,255,.28);top:-50px;right:-50px}
+.top .cp{position:absolute;left:12px;bottom:12px;background:#fff;color:var(--r);font:700 12px "DM Sans",sans-serif;padding:5px 11px;border-radius:99px}
+.inf{padding:14px 16px 16px;font-family:"DM Sans",sans-serif}
+.inf b{font:800 20px Fraunces,serif;display:block}
+.inf .sb{color:var(--m);font-size:13px;margin-bottom:8px}
+.tg{display:flex;flex-wrap:wrap;gap:6px}
+.tg i{font-style:normal;background:var(--s);color:var(--rd);font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px}
+.stamp{position:absolute;top:20px;padding:4px 12px;font:800 20px "DM Sans",sans-serif;border-radius:8px;background:#fff;opacity:0;letter-spacing:1px}
+.stamp.y{left:14px;color:var(--r);transform:rotate(-10deg)}.stamp.n{right:14px;color:var(--k);transform:rotate(10deg)}
+.empty{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;color:var(--m);padding:20px}
+.acts{display:flex;justify-content:center;gap:18px;padding:14px 0 22px}
+.acts button{width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.acts button:active{transform:scale(.9)}
+.acts .n{background:var(--k)}.acts .y{background:linear-gradient(135deg,var(--r2),var(--r));box-shadow:0 8px 18px rgba(225,29,46,.4)}
+.acts svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mt{position:absolute;inset:0;z-index:5;background:linear-gradient(170deg,var(--r2),var(--r) 50%,var(--rd));color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px}
+.mt.on{display:flex;animation:pp .35s}
+@keyframes pp{from{opacity:0;transform:scale(.92)}}
+.av{display:flex;margin-bottom:20px}
+.av div{width:78px;height:78px;border-radius:50%;background:#fff;color:var(--r);display:flex;align-items:center;justify-content:center;font:800 34px Fraunces,serif;border:4px solid var(--rd)}
+.av div+div{margin-left:-14px;background:var(--k);color:#fff}
+.mt h2{font-size:42px;line-height:1;margin:0 0 10px;font-weight:800}
+.mt p{margin:0 0 22px;font-size:15px;opacity:.95}
+.mt .btn{background:#fff;color:var(--r);padding:12px 22px;font-size:15px;margin:4px;box-shadow:none}
+.mt .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.band{background:var(--r);color:#fff;transform:rotate(-1.8deg);margin:0 -30px;overflow:hidden;padding:18px 0;box-shadow:0 14px 30px rgba(143,10,22,.25)}
+.mq{display:flex;width:max-content;animation:mq 28s linear infinite}
+.mq span{font:italic 500 30px Fraunces,serif;padding:0 22px;white-space:nowrap}
+.mq span:nth-child(even){font-style:normal;font-weight:800;opacity:.6}
+@keyframes mq{to{transform:translateX(-50%)}}
+section.sec{padding:100px 0 20px}
+.kick{color:var(--r);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:13px;margin-bottom:12px}
+h2.big{font-size:clamp(34px,5vw,56px);line-height:1.04;margin:0 0 46px;max-width:680px;font-weight:800;letter-spacing:-1px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+@media(max-width:800px){.steps{grid-template-columns:1fr;gap:26px}}
+.st .nm{font:800 120px/1 Fraunces,serif;color:transparent;-webkit-text-stroke:2px var(--r);margin-bottom:6px}
+.st h3{font-size:24px;margin:0 0 6px}.st p{margin:0;color:var(--m)}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.bx{border-radius:28px;padding:30px;position:relative;overflow:hidden}
+.bx h3{font-size:26px;margin:0 0 8px;line-height:1.1}.bx p{margin:0;font-size:16px}
+.b1{grid-column:span 4;background:linear-gradient(135deg,var(--r2),var(--r) 55%,var(--rd));color:#fff;min-height:250px}
+.b2{grid-column:span 2;background:var(--s)}
+.b3{grid-column:span 2;background:var(--k);color:#fff}
+.b4{grid-column:span 2;background:var(--s)}
+.b5{grid-column:span 2;background:#fff;box-shadow:inset 0 0 0 2px var(--k)}
+@media(max-width:860px){.b1,.b2,.b3,.b4,.b5{grid-column:span 6}}
+.b1 .tg{margin-top:22px;max-width:420px}.b1 .tg i{background:rgba(255,255,255,.2);color:#fff;font-size:14px;padding:6px 14px}
+.b1:after{content:"";position:absolute;right:-60px;bottom:-80px;width:260px;height:260px;border-radius:50%;border:2px solid rgba(255,255,255,.3);box-shadow:0 0 0 40px rgba(255,255,255,.07)}
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:20px}
+.wk i{aspect-ratio:1;border-radius:8px;background:#fff}.wk i.on{background:var(--r)}
+.ch{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+.ch span{padding:9px 14px;border-radius:16px;font-size:14px;max-width:85%}
+.ch .a{background:#3a2626;border-bottom-left-radius:4px}.ch .b{background:var(--r);align-self:flex-end;border-bottom-right-radius:4px}
+.bar2{margin-top:18px;display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:700}
+.bar2 div{height:10px;border-radius:99px;background:#fff;overflow:hidden}.bar2 div b{display:block;height:100%;background:var(--r);border-radius:99px}
+.price{font:800 64px/1 Fraunces,serif;margin-top:14px;color:var(--r)}
+.faq{max-width:760px}
+details{border-bottom:2px solid var(--k);padding:20px 0}
+summary{font:700 21px Fraunces,serif;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--r);font-size:28px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin:12px 0 0;color:var(--m)}
+.end{margin:110px 0 40px;border-radius:40px;padding:70px 40px;text-align:center;color:#fff;background:radial-gradient(circle at 15% 10%,#ff7b6e,transparent 45%),linear-gradient(135deg,var(--r),var(--rd));position:relative;overflow:hidden}
+.end h2{font-size:clamp(36px,6vw,66px);line-height:1;margin:0 0 16px;font-weight:800;letter-spacing:-1px}
+.end p{max-width:480px;margin:0 auto 30px;opacity:.92}
+.fm{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.fm input{flex:1 1 220px;padding:15px 20px;border-radius:99px;border:0;font:500 16px "DM Sans",sans-serif;color:var(--k)}
+.fm .btn{background:var(--k)}
+.ok{margin-top:16px;font-weight:700;min-height:26px}
+.cnt{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.16);padding:8px 18px;border-radius:99px;font-weight:700;margin:0 0 26px;visibility:hidden}
+.cnt.on{visibility:visible}
+.cnt b{font:800 22px Fraunces,serif}
+.cnt:before{content:"";width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.3);animation:pl 1.6s ease-in-out infinite}
+@keyframes pl{50%{box-shadow:0 0 0 8px rgba(255,255,255,0)}}
+.fm .btn:disabled{opacity:.7;cursor:wait;transform:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.lg{margin:14px auto 0;font-size:13px;opacity:.8;max-width:420px}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:20px 0 50px;color:var(--m);font-size:14px}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.js .rv.in{opacity:1;transform:none}
+</style>
+<script>document.documentElement.className="js"</script>
+</head>
+<body>
+<div class="w">
+<nav>
+<a class="logo" href="#top"><svg viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#e11d2e"/><path d="M20 12c-2.5-2-6-2.5-9.5-2v17c3.5-.5 7 0 9.5 2 2.5-2 6-2.5 9.5-2V10c-3.5-.5-7 0-9.5 2zM20 12v17" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Match Acadêmico</a>
+<div class="l"><a href="#como">Como funciona</a><a href="#recursos">Recursos</a><a href="#faq">Dúvidas</a><a class="btn" href="#entrar">Entrar na lista</a></div>
+</nav>
+<header class="hero" id="top">
+<div>
+<span class="tagl">Para quem estuda e cansou de estudar sozinho</span>
+<h1>Seu parceiro de estudo está a <em>um deslize</em> de distância.</h1>
+<p class="lead">O Match Acadêmico mostra pessoas que estudam a mesma matéria que você, no mesmo ritmo e nos mesmos horários. Deu match? Marquem a sessão e mãos à obra.</p>
+<div class="cta"><a class="btn red" href="#entrar">Quero entrar</a><a class="btn ghost" href="#como">Ver como funciona</a></div>
+<div class="minis"><div><b>1 min</b>para criar o perfil</div><div><b>100%</b>focado em estudo</div><div><b>R$ 0</b>para estudantes</div></div>
+</div>
+<div class="stage">
+<div class="blob"></div>
+<div class="chip c1">Cálculo II<small>3 pessoas querem estudar</small></div>
+<div class="chip c2">Hoje, 19h<small>Biblioteca central</small></div>
+<div class="chip c3">92% compatível<small>com o seu ritmo</small></div>
+<div class="phone"><div class="scr">
+<div class="bar"><a class="logo" href="#top"><svg viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#e11d2e"/><path d="M20 12c-2.5-2-6-2.5-9.5-2v17c3.5-.5 7 0 9.5 2 2.5-2 6-2.5 9.5-2V10c-3.5-.5-7 0-9.5 2zM20 12v17" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Match Acadêmico</a><span>Perto de você</span></div>
+<div class="deck" id="deck"><div class="empty" id="empty"><div>Acabaram as sugestões de hoje.</div><button class="btn red" id="again">Recomeçar</button></div></div>
+<div class="acts">
+<button class="n" id="no" aria-label="Passar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<button class="y" id="yes" aria-label="Estudar juntos"><svg viewBox="0 0 24 24"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13C17 4 14 4.5 12 6zM12 6v13"/></svg></button>
+</div>
+<div class="mt" id="mt"><div class="av"><div>V</div><div id="mav">A</div></div><h2>Deu match!</h2><p id="mtx"></p><button class="btn" id="mmsg">Mandar mensagem</button><button class="btn ghost" id="mc">Continuar</button></div>
+</div></div>
+</div>
+</header>
+</div>
+<div class="band" aria-hidden="true"><div class="mq" id="mq"></div></div>
+<div class="w">
+<section class="sec" id="como">
+<div class="kick rv">Como funciona</div>
+<h2 class="big rv">Três passos entre você e a dupla ideal.</h2>
+<div class="steps">
+<div class="st rv"><div class="nm">01</div><h3>Monte seu perfil</h3><p>Conte o curso, as matérias que está estudando e os horários em que você rende mais.</p></div>
+<div class="st rv"><div class="nm">02</div><h3>Deslize e dê match</h3><p>Veja pessoas compatíveis. Livrinho para estudar junto, X para passar. Só rola conversa se os dois toparem.</p></div>
+<div class="st rv"><div class="nm">03</div><h3>Marque a sessão</h3><p>Combinem o lugar, o horário e o conteúdo. Depois é só aparecer e render.</p></div>
+</div>
+</section>
+<section class="sec" id="recursos">
+<div class="kick rv">Recursos</div>
+<h2 class="big rv">Feito para quem leva o estudo a sério.</h2>
+<div class="bento">
+<div class="bx b1 rv"><h3>Match por matéria</h3><p>Você escolhe o que está estudando e o app cruza com quem precisa da mesma coisa, da prova de amanhã ao concurso do ano que vem.</p><div class="tg"><i>Cálculo</i><i>Anatomia</i><i>Direito Civil</i><i>Redação</i><i>Estatística</i><i>Inglês</i></div></div>
+<div class="bx b2 rv"><h3>Horários que batem</h3><p>Veja de cara quando vocês dois estão livres.</p><div class="wk" id="wk"></div></div>
+<div class="bx b3 rv"><h3>Conversa só no match</h3><p>Sem mensagem aleatória. Só fala com quem também quis falar com você.</p><div class="ch"><span class="a">Bora revisar derivadas amanhã?</span><span class="b">Bora! 19h na biblioteca?</span></div></div>
+<div class="bx b4 rv"><h3>Ritmo parecido</h3><p>Foco, pausas e metas combinando.</p><div class="bar2"><div><b style="width:92%"></b></div><div><b style="width:74%"></b></div><div><b style="width:85%"></b></div></div></div>
+<div class="bx b5 rv"><h3>Grátis para estudantes</h3><p>Sem pegadinha e sem cartão.</p><div class="price">R$ 0</div></div>
+</div>
+</section>
+<section class="sec" id="faq">
+<div class="kick rv">Dúvidas</div>
+<h2 class="big rv">O que mais perguntam.</h2>
+<div class="faq rv">
+<details><summary>É um app de namoro?</summary><p>Não. O estilo de deslizar é parecido, mas aqui o objetivo é um só: achar gente para estudar.</p></details>
+<details><summary>Posso escolher com quem estudar?</summary><p>Sim. Você vê o perfil, a matéria e os horários antes de decidir. A conversa só abre se os dois derem match.</p></details>
+<details><summary>Funciona para estudo online?</summary><p>Funciona. Você define se prefere encontro presencial, chamada de vídeo ou os dois.</p></details>
+<details><summary>Quando o app sai?</summary><p>Entre na lista de espera abaixo e você será avisado assim que abrirmos as primeiras vagas.</p></details>
+</div>
+</section>
+<section class="end rv" id="entrar">
+<h2 class="ser">Sua próxima sessão de estudo começa aqui.</h2>
+<p>Deixe seu e-mail e entre na lista de espera.</p>
+<div class="cnt" id="cnt" aria-live="polite"><b id="cn">0</b><span id="cl">estudantes já entraram na lista</span></div>
+<form class="fm" id="fm" novalidate><input id="em" type="email" maxlength="120" autocomplete="email" placeholder="seu@email.com" aria-label="E-mail" required><input class="hp" id="site" name="site" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" id="go" type="submit">Entrar na lista</button></form>
+<div class="ok" id="ok" aria-live="polite"></div>
+<p class="lg">Ao enviar, você concorda em receber e-mails sobre o Match Acadêmico. Usamos seu e-mail só para isso e nunca o compartilhamos.</p>
+</section>
+<footer><span>© 2026 Match Acadêmico</span><span>Feito para quem estuda.</span></footer>
+</div>
+<script>
+var P=[["Ana","Direito","Direito Civil","Ter e qui, à noite","94%",["Contratos","Provas OAB"]],["Bruno","Engenharia","Cálculo II","Sábado de manhã","88%",["Derivadas","Integrais"]],["Camila","Medicina","Anatomia","Seg, qua e sex","92%",["Sistemas","Revisão"]],["Diego","Administração","Estatística","Domingo à tarde","81%",["Probabilidade","Excel"]],["Elisa","Letras","Redação do Enem","Noites de semana","90%",["Dissertação","Repertório"]]];
+var deck=document.getElementById("deck"),i=0,busy=false,$=function(x){return document.getElementById(x)};
+function render(){
+  deck.querySelectorAll(".card").forEach(function(c){c.remove()});
+  $("empty").style.display=i>=P.length?"flex":"none";
+  for(var k=Math.min(i+2,P.length-1);k>=i;k--){
+    var p=P[k],c=document.createElement("div");
+    c.className="card";
+    c.innerHTML='<div class="top">'+p[0][0]+'<span class="cp">'+p[4]+' compatível</span></div><div class="inf"><b>'+p[0]+'</b><div class="sb">'+p[1]+' · '+p[3]+'</div><div class="tg"><i>'+p[2]+'</i><i>'+p[5][0]+'</i><i>'+p[5][1]+'</i></div></div><span class="stamp y">VAMOS</span><span class="stamp n">PASSO</span>';
+    if(k>i){c.style.transform="scale("+(1-(k-i)*.05)+") translateY("+(k-i)*10+"px)"}
+    else drag(c);
+    deck.appendChild(c);
+  }
+}
+function drag(c){
+  var sx=0,dx=0,on=false;
+  c.onpointerdown=function(e){on=true;sx=e.clientX;c.classList.add("drag");c.setPointerCapture(e.pointerId)};
+  c.onpointermove=function(e){if(!on)return;dx=e.clientX-sx;c.style.transform="translateX("+dx+"px) rotate("+dx/25+"deg)";c.querySelector(".y").style.opacity=Math.max(0,dx/90);c.querySelector(".n").style.opacity=Math.max(0,-dx/90)};
+  c.onpointerup=function(){if(!on)return;on=false;c.classList.remove("drag");if(dx>80)go(true);else if(dx<-80)go(false);else{c.style.transform="";c.querySelector(".y").style.opacity=0;c.querySelector(".n").style.opacity=0}dx=0};
+}
+function go(like){
+  if(busy||i>=P.length)return;busy=true;
+  var c=deck.querySelector(".card:last-of-type");
+  c.classList.remove("drag");
+  c.style.transform="translateX("+(like?420:-420)+"px) rotate("+(like?20:-20)+"deg)";
+  var p=P[i];
+  setTimeout(function(){i++;busy=false;render();if(like){$("mav").textContent=p[0][0];$("mtx").textContent="Você e "+p[0]+" querem estudar "+p[2]+" juntos.";$("mt").classList.add("on")}},280);
+}
+$("yes").onclick=function(){go(true)};
+$("no").onclick=function(){go(false)};
+$("mc").onclick=function(){$("mt").classList.remove("on")};
+$("mmsg").onclick=function(){$("mt").classList.remove("on")};
+$("again").onclick=function(){i=0;render()};
+render();
+var ms=["Cálculo","Anatomia","Direito","Estatística","Redação","Física","Química","Inglês","Programação","História"],h="";
+for(var r=0;r<4;r++)ms.forEach(function(m){h+="<span>"+m+"</span><span>●</span>"});
+$("mq").innerHTML=h;
+var wk="";[1,0,1,1,0,0,1,0,1,0,0,1,1,0,0,1,1,0,1,0,1].forEach(function(v){wk+='<i class="'+(v?"on":"")+'"></i>'});
+$("wk").innerHTML=wk;
+// ===== Lista de espera (Google Apps Script) =====
+// Cole aqui a URL da implantação (termina em /exec):
+var API="https://script.google.com/macros/s/AKfycbxKa4D6WqRQSpXzszqz6Z8rk7nZpVw5z99dnhrtDalSMLBkD-aRgPWaoAQ-4SEeK2UiaA/exec";
+var temApi=/^https:\/\/script\.google\.com\/.+\/exec$/.test(API),atual=0;
+var ERROS={email_invalido:"Digite um e-mail válido.",muitas_tentativas:"Muita gente ao mesmo tempo! Tente de novo em 1 minuto.",ocupado:"Servidor ocupado, tente de novo em instantes."};
+function conta(n){
+  n=Number(n);if(!isFinite(n)||n<0)return;n=Math.floor(n);
+  $("cl").textContent=n===1?"estudante já entrou na lista":"estudantes já entraram na lista";
+  $("cnt").classList.add("on");
+  var de=atual,t0=performance.now();atual=n;
+  (function passo(t){var k=Math.min(1,(t-t0)/700);$("cn").textContent=Math.round(de+(n-de)*(1-Math.pow(1-k,3))).toLocaleString("pt-BR");if(k<1)requestAnimationFrame(passo)})(t0);
+}
+if(temApi)fetch(API).then(function(r){return r.json()}).then(function(d){if(d.ok)conta(d.total)}).catch(function(){});
+$("fm").onsubmit=function(ev){
+  ev.preventDefault();
+  var v=$("em").value.trim().toLowerCase(),b=$("go"),ok=$("ok");
+  if(!/^[a-z0-9][a-z0-9._%+-]*@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(v)||v.length>120){ok.textContent="Digite um e-mail válido.";return}
+  if(!temApi){ok.textContent="Pronto! Avisaremos você em breve.";return}
+  b.disabled=true;b.textContent="Enviando…";ok.textContent="";
+  fetch(API,{method:"POST",body:new URLSearchParams({email:v,site:$("site").value})})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d.ok){ok.textContent=d.repetido?"Esse e-mail já está na lista 😉":"Pronto! Confira sua caixa de entrada (e o spam).";conta(d.total);$("em").value=""}
+      else ok.textContent=ERROS[d.erro]||"Algo deu errado. Tente de novo.";
+    })
+    .catch(function(){ok.textContent="Não deu para conectar. Tente de novo em instantes."})
+    .then(function(){b.disabled=false;b.textContent="Entrar na lista"});
+};
+try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll(".rv").forEach(function(e){io.observe(e)})}catch(e){document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in")})}
+</script>
+</body>
+</html>
